@@ -1,0 +1,20 @@
+version: "3.5"
+services:
+  fifteen-prod:
+    image: fifteen-prod
+    container_name: fifteen-prod
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "172.50.10.1:8080:80"
+    networks:
+      fifteen-prod_net:
+        ipv4_address: 172.50.10.11
+
+networks:
+  fifteen-prod_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.50.10.0/24"
