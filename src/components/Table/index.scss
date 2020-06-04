@@ -2,18 +2,20 @@
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  left: 0;
+  left: -25px;
   right: 0;
   text-align: center;
-  width: 400px;
   z-index: -1;
   display: flex;
   justify-content: center;
-  //background: #eceaea;
-  border-radius: 26px;
-  background: linear-gradient(145deg, #dcdcdc, #ffffff);
-  box-shadow:  32px 32px 64px #e3e3e3,
-  -16px -16px 64px #ffffff;
+  //border-radius: 26px;
+  //background: linear-gradient(145deg, #dcdcdc, #ffffff);
+  //box-shadow:  32px 32px 64px #e3e3e3,
+  //-16px -16px 64px #ffffff;
+  border-radius: 7px;
+  background: #e6e6e6;
+  box-shadow:  7px 7px 16px #d6d6d6,
+  -7px -7px 16px #f6f6f6;
 
   table {
     border-collapse: collapse;
@@ -37,9 +39,5 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  left: -200px;
-  &__row {
-    //display: flex;
-    //flex-direction: row;
-  }
+  top: 2.5px;
 }

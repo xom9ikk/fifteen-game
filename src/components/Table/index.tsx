@@ -15,7 +15,7 @@ export const Table: FC<ITable> = ({ rows, columns, tiles }) => {
 
   return (
     <div>
-      <div className="table">
+      <div className="table" style={{ width: columns * 100 + 5, height: rows * 100 + 5 }}>
         <table>
           <tbody>
             {
@@ -32,7 +32,7 @@ export const Table: FC<ITable> = ({ rows, columns, tiles }) => {
           </tbody>
         </table>
       </div>
-      <div className="field">
+      <div className="field" style={{ left: -(columns * 50) }}>
         {
               [...new Array(rows)].map((r, rowIndex) => (
                 [...new Array(columns)].map((c, columnIndex) => (

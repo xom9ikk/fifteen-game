@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { ITile } from '../components/Tile';
 import { EnumKeyCodes } from '../types/keycodes';
+import { SessionActions } from '../store/actions';
 
 const isLimited = (rows: number, columns: number, zeroPosition: number, targetPosition: number) => {
   if (targetPosition < 0) {
@@ -64,6 +66,7 @@ const calculateTargetPosition = (keyCode: EnumKeyCodes, zeroPosition: number, co
 export const useTiles = (rows: number, columns: number, onDone: Function) => {
   const [tiles, _setTiles] = useState<Array<ITile>>([]);
   const [zeroPosition, _setZeroPosition] = useState<number>(3);
+  const dispatch = useDispatch();
 
   const zeroPositionRef = React.useRef(zeroPosition);
   const tilesRef = React.useRef(tiles);
@@ -83,6 +86,7 @@ export const useTiles = (rows: number, columns: number, onDone: Function) => {
     if (isLimited(rows, columns, zeroPositionRef.current, targetPosition)) {
       return;
     }
+    dispatch(SessionActions.increaseMovements());
     const zeroTilePosition = zeroPositionRef.current;
     const newTiles = tilesRef.current.map((el) => {
       if (el.position === zeroTilePosition) {

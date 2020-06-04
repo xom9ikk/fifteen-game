@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { IRootState } from './state';
-import { CustomReducer } from './custom';
+import { SessionReducer } from './session';
 
 export const rootReducer = combineReducers<IRootState>({
-  custom: CustomReducer as any,
+  session: SessionReducer as any,
 });

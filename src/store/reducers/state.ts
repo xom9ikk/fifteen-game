@@ -1,7 +1,7 @@
 import {
-  ICustomInterface,
+  ISession,
 } from '../../types';
 
 export interface IRootState {
-  custom: ICustomInterface,
+  session: ISession,
 }

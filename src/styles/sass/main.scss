@@ -1,3 +1,8 @@
 @import './variables/colors';
 @import './base';
 @import '../../index';
+
+
+#root {
+  transition: blur ease-in-out .3s;
+}
