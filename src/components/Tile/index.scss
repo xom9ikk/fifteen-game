@@ -1,0 +1,21 @@
+.tile {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;border-radius: 17px;
+  background: linear-gradient(145deg, #cfcfcf, #f6f6f6);
+  box-shadow:  5px 5px 12px #c6c6c6,
+  -5px -5px 12px #ffffff;
+  width: 100px;
+  height: 100px;
+  //margin: 5px;
+  cursor: pointer;
+  transition: left .3s ease-in-out, top .3s ease-in-out;
+  &--hide {
+    opacity: 0;
+  }
+  &__text {
+    font-size: 60px;
+    color: #757575;
+  }
+}
