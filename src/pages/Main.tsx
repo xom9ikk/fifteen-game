@@ -25,7 +25,6 @@ export const Main: FC = () => {
   const movementsRef = useRef(movements);
 
   const doneHandler = () => {
-    console.log(startRef.current);
     calculate(startRef.current!, new Date());
     setIsDone(true);
     dispatch(SessionActions.end());
@@ -62,7 +61,6 @@ export const Main: FC = () => {
   }, []);
 
   const restartHandler = () => {
-    console.log('restart');
     setIsDone(false);
     generateTiles();
     dispatch(SessionActions.reset());
@@ -70,19 +68,15 @@ export const Main: FC = () => {
 
   const gestureHandlers = useSwipeable({
     onSwipedLeft: () => {
-      console.log('onSwipedLeft');
       calculatePositions(EnumKeyCodes.ArrowLeft);
     },
     onSwipedRight: () => {
-      console.log('onSwipedRight');
       calculatePositions(EnumKeyCodes.ArrowRight);
     },
     onSwipedUp: () => {
-      console.log('onSwipedUp');
       calculatePositions(EnumKeyCodes.ArrowUp);
     },
     onSwipedDown: () => {
-      console.log('onSwipedDown');
       calculatePositions(EnumKeyCodes.ArrowDown);
     },
     preventDefaultTouchmoveEvent: true,

@@ -7,6 +7,7 @@ export const usePortal = (id: string) => {
     if (parentElem) {
       parentElem.appendChild(rootElemRef.current);
     } else {
+      // eslint-disable-next-line no-console
       console.error(`usePortal id ${id} not found`);
     }
 
