@@ -2,6 +2,7 @@ import React, {
   FC, useEffect, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSwipeable } from 'react-swipeable';
 import { Header } from '../components/Header';
 import { Table } from '../components/Table';
 import { Container } from '../components/Container';
@@ -67,6 +68,27 @@ export const Main: FC = () => {
     dispatch(SessionActions.reset());
   };
 
+  const gestureHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      console.log('onSwipedLeft');
+      calculatePositions(EnumKeyCodes.ArrowLeft);
+    },
+    onSwipedRight: () => {
+      console.log('onSwipedRight');
+      calculatePositions(EnumKeyCodes.ArrowRight);
+    },
+    onSwipedUp: () => {
+      console.log('onSwipedUp');
+      calculatePositions(EnumKeyCodes.ArrowUp);
+    },
+    onSwipedDown: () => {
+      console.log('onSwipedDown');
+      calculatePositions(EnumKeyCodes.ArrowDown);
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
   return (
     <>
       <Container>
@@ -79,6 +101,7 @@ export const Main: FC = () => {
           rows={rows}
           columns={columns}
           tiles={tiles}
+          gestureHandlers={gestureHandlers}
         />
       </Container>
       <Modal

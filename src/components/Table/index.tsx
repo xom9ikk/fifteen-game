@@ -5,16 +5,19 @@ interface ITable {
   rows: number;
   columns: number;
   tiles: Array<ITile>
+  gestureHandlers: Object
 }
 
-export const Table: FC<ITable> = ({ rows, columns, tiles }) => {
+export const Table: FC<ITable> = ({
+  rows, columns, tiles, gestureHandlers,
+}) => {
   const getTileData = (rowIndex: number, columnIndex: number) => {
     const position = (rowIndex * columns) + (columnIndex);
     return tiles[position];
   };
 
   return (
-    <div>
+    <div {...gestureHandlers}>
       <div className="table" style={{ width: columns * 100 + 5, height: rows * 100 + 5 }}>
         <table>
           <tbody>
