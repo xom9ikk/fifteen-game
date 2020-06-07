@@ -1,17 +1,10 @@
 import React, { FC } from 'react';
+import { Logo } from '../Logo';
+import { Menu } from '../Menu';
 
-interface IHeader {
-  title: string;
-  subtitle: string;
-}
-
-export const Header: FC<IHeader> = ({ title, subtitle }) => (
-  <div className="header">
-    <h3>
-      {title}
-    </h3>
-    <h6>
-      {subtitle}
-    </h6>
-  </div>
+export const Header: FC = () => (
+  <header className="header">
+    <Logo />
+    <Menu />
+  </header>
 );

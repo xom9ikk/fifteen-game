@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ITile } from '../components/Tile';
-import { EnumKeyCodes } from '../types/keycodes';
+import { EnumKeyCodes } from '../types';
 import { SessionActions } from '../store/actions';
 
 const isLimited = (rows: number, columns: number, zeroPosition: number, targetPosition: number) => {

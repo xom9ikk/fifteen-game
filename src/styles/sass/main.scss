@@ -6,3 +6,63 @@
 #root {
   transition: blur ease-in-out .3s;
 }
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  transition: background .3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &--light {
+    background: $white;
+    .logo__text {
+      color: $primary-text;
+    }
+    .menu {
+      &__separator {
+        background: #d3d3d3;
+      }
+      &__button {
+        background: #edeff1;
+        &:hover {
+          background: #e3e5e7;
+        }
+      }
+    }
+  }
+  &--dark {
+    background: $dark;
+    .logo__text {
+      color: $white;
+    }
+    .menu {
+      &__separator {
+        background: #333942;
+      }
+      &__button {
+        background: #30343a;
+        &:hover{
+          background: #3a3e44;
+        }
+      }
+    }
+    .info {
+      &__time, &__steps {
+        color: #d7dae0;
+      }
+    }
+    .table {
+      background: #252a30;
+      box-shadow: 20px 20px 50px $dark, -20px -20px 50px $darker;
+    }
+    .tile {
+      background: #30343a;
+      box-shadow: 5px 5px 20px $dark, -5px -5px 20px $darker;
+      //box-shadow: 20px 20px 60px #353535, -20px -20px 60px #222;
+      &__text {
+        color: #d7dae0;
+      }
+    }
+  }
+}

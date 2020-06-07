@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSwipeable } from 'react-swipeable';
 import { Header } from '../components/Header';
 import { Table } from '../components/Table';
-import { Container } from '../components/Container';
+import { GameField } from '../components/GameField';
 import { GameInfo } from '../components/GameInfo';
 import { Modal } from '../components/Modal';
 import { useTiles } from '../use/tiles';
-import { EnumKeyCodes } from '../types/keycodes';
+import { EnumKeyCodes, EnumTheme } from '../types';
 import { SessionActions } from '../store/actions';
 import { IRootState } from '../store/reducers/state';
 import { useDiffTime } from '../use/formattedTime';
+import { ThemeEffects } from '../store/effects';
 
 export const Main: FC = () => {
   const rows = 4;
@@ -20,6 +21,8 @@ export const Main: FC = () => {
   const dispatch = useDispatch();
   const [isDone, setIsDone] = useState<boolean>(false);
   const { start, movements } = useSelector((state: IRootState) => state.session);
+  const appTheme = useSelector((state: IRootState) => state.theme);
+  const theme = appTheme === EnumTheme.Dark ? 'container--dark' : 'container--light';
   const { time, calculate } = useDiffTime(start);
   const startRef = useRef(start);
   const movementsRef = useRef(movements);
@@ -54,11 +57,12 @@ export const Main: FC = () => {
 
   useEffect(() => {
     generateTiles();
+    dispatch(ThemeEffects.restoreTheme());
     document.addEventListener('keydown', keydownHandler);
     return () => {
       document.removeEventListener('keydown', keydownHandler);
     };
-  }, []);
+  }, [dispatch]);
 
   const restartHandler = () => {
     setIsDone(false);
@@ -85,19 +89,18 @@ export const Main: FC = () => {
 
   return (
     <>
-      <Container>
-        <Header
-          title="The fifteen game"
-          subtitle="Slide tiles to put them in order"
-        />
-        <GameInfo />
-        <Table
-          rows={rows}
-          columns={columns}
-          tiles={tiles}
-          gestureHandlers={gestureHandlers}
-        />
-      </Container>
+      <div className={`container ${theme}`}>
+        <Header />
+        <GameField>
+          <GameInfo />
+          <Table
+            rows={rows}
+            columns={columns}
+            tiles={tiles}
+            gestureHandlers={gestureHandlers}
+          />
+        </GameField>
+      </div>
       <Modal
         isOpen={isDone}
         positive="New game"

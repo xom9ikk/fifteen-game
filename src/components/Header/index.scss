@@ -1,15 +1,7 @@
 .header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #333333;
-  font-size: 30px;
-  padding: 40px;
-  h3 {
-    margin: 30px 0;
-  }
-  h6 {
-    margin: 0px;
-  }
+  height: 10rem;
+  padding: 0 5%;
+  justify-content: space-between;
+  width: 100%;
 }
