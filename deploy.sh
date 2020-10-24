@@ -1,4 +1,4 @@
-APP_NAME='ball'
+APP_NAME='fifteen'
 sudo service nginx stop
 sudo certbot certonly --standalone -d $APP_NAME.xom9ik.com --staple-ocsp -m xom9ik.code@gmail.com --agree-tos
 echo "server {
