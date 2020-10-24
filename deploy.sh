@@ -1,4 +1,5 @@
 APP_NAME='fifteen'
+DOCKER_ADDRESS='http://172.50.10.1:8080'
 sudo service nginx stop
 sudo certbot certonly --standalone -d $APP_NAME.xom9ik.com --staple-ocsp -m xom9ik.code@gmail.com --agree-tos
 echo "server {
@@ -26,7 +27,7 @@ echo "server {
             image/svg+xml/javascript;
 
         location / {
-            proxy_pass http://172.50.10.1:8080;
+            proxy_pass $DOCKER_ADDRESS;
             proxy_http_version 1.1;
             proxy_set_header Upgrade \$http_upgrade;
             proxy_set_header Connection 'upgrade';
