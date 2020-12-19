@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ITile } from '../components/Tile';
 import { EnumKeyCodes } from '../types';
 import { SessionActions } from '../store/actions';
+import { useTileSize } from './tileSize';
 
 const isLimited = (rows: number, columns: number, zeroPosition: number, targetPosition: number) => {
   if (targetPosition < 0) {
@@ -32,17 +33,17 @@ const generateShuffleArray = (size: number) => {
     .map((a) => a.value);
 };
 
-const calculatePosition = (rows: number, columns: number, index: number) => {
-  const tmpArray = [];
+const calculatePosition = (rows: number, columns: number, index: number, tileSize: number) => {
+  const arr = [];
   for (let i = 0; i < rows; i += 1) {
     for (let j = 0; j < columns; j += 1) {
-      tmpArray.push({
-        top: i * 100,
-        left: j * 100,
+      arr.push({
+        top: i * tileSize,
+        left: j * tileSize,
       });
     }
   }
-  return tmpArray[index];
+  return arr[index];
 };
 
 const calculateTargetPosition = (keyCode: EnumKeyCodes, zeroPosition: number, columns: number) => {
@@ -64,9 +65,13 @@ const calculateTargetPosition = (keyCode: EnumKeyCodes, zeroPosition: number, co
 };
 
 export const useTiles = (rows: number, columns: number, onDone: Function) => {
+  const dispatch = useDispatch();
+
   const [tiles, _setTiles] = useState<Array<ITile>>([]);
   const [zeroPosition, _setZeroPosition] = useState<number>(3);
-  const dispatch = useDispatch();
+
+  const { tileSize } = useTileSize();
+  const tileSizeRef = useRef<number>(tileSize);
 
   const zeroPositionRef = React.useRef(zeroPosition);
   const tilesRef = React.useRef(tiles);
@@ -94,14 +99,14 @@ export const useTiles = (rows: number, columns: number, onDone: Function) => {
         return {
           value: el.value,
           position: targetPosition,
-          ...calculatePosition(rows, columns, targetPosition),
+          ...calculatePosition(rows, columns, targetPosition, tileSizeRef.current),
         };
       }
       if (el.position === targetPosition) {
         return {
           value: el.value,
           position: zeroTilePosition,
-          ...calculatePosition(rows, columns, zeroTilePosition),
+          ...calculatePosition(rows, columns, zeroTilePosition, tileSizeRef.current),
         };
       }
       return el;
@@ -117,7 +122,7 @@ export const useTiles = (rows: number, columns: number, onDone: Function) => {
       for (let j = 0; j < columns; j += 1) {
         initialTiles.push({
           value: shuffledNumbers[counter],
-          ...calculatePosition(rows, columns, counter),
+          ...calculatePosition(rows, columns, counter, tileSizeRef.current),
           position: (i * columns) + (j),
         });
         counter += 1;
@@ -135,6 +140,11 @@ export const useTiles = (rows: number, columns: number, onDone: Function) => {
       onDone();
     }
   }, [tiles]);
+
+  useEffect(() => {
+    tileSizeRef.current = tileSize;
+    generateTiles();
+  }, [tileSize]);
 
   return {
     calculatePositions,

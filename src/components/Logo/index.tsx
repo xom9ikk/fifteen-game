@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 
-export const Logo: FC = () => (
-  <div className="logo">
+interface ILogo {
+  isMenuOpened: boolean;
+}
+
+export const Logo: FC<ILogo> = ({ isMenuOpened }) => (
+  <div className={`logo ${isMenuOpened ? 'logo--menu-open' : ''}`}>
     <div className="logo__square" />
     <span className="logo__text">
       Amaze Fifteen

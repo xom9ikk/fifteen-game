@@ -13,8 +13,8 @@
   box-shadow:  5px 5px 10px #e1e1e1,
   -5px -5px 10px #e6e6e6;
 
-  width: 92px;
-  height: 92px;
+  width: $tile-normal - 8;
+  height: $tile-normal - 8;
   margin: 4px;
 
   transition: left .3s ease-in-out, top .3s ease-in-out;

@@ -1,0 +1,27 @@
+$first-breakpoint: 480px;
+
+@media screen and (max-width: $first-breakpoint) {
+  .logo--menu-open {
+    flex: 0;
+    opacity: 0;
+  }
+  .header {
+    height: 60px;
+  }
+  .game-field {
+    margin: 60px 0 $tile-small * 5;
+  }
+  .tile {
+    width: $tile-small - 8;
+    height: $tile-small - 8;
+    &__text {
+      font-size: 26px;
+    }
+  }
+  .table {
+    td {
+      width: $tile-small;
+      height: $tile-small;
+    }
+  }
+}

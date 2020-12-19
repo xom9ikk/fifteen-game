@@ -1,8 +1,7 @@
 .table {
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: -5px;
+  margin: auto;
+  left: -3px;
   right: 0;
   text-align: center;
   //z-index: -1;
@@ -14,7 +13,7 @@
   //-16px -16px 64px #ffffff;
   border-radius: 7px;
   background: #e6e6e6;
-  box-shadow:  7px 7px 16px #d6d6d6,
+  box-shadow: 7px 7px 16px #d6d6d6,
   -7px -7px 16px #f6f6f6;
 
   table {

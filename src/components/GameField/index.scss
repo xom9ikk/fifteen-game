@@ -1,4 +1,5 @@
 .game-field {
+  margin: 160px 0 $tile-normal * 5;
   max-width: 960px;
   display: flex;
   flex-direction: column;

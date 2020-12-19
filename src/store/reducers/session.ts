@@ -17,7 +17,9 @@ export const SessionReducer = handleActions<ISession, ISession>({
           };
         }
         return {
-          ...state, movements: state.movements + 1, start: new Date(),
+          ...state,
+          movements: state.movements + 1,
+          start: new Date(),
         };
       },
   [SessionActions.Type.RESET]:

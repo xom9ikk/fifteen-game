@@ -21,15 +21,14 @@ export const useDiffTime = (start: Date = new Date()) => {
     seconds: '00',
     isOdd: true,
   });
-  const offset = new Date().getTimezoneOffset() * 60 * 1000;
 
   const calculate = (s: Date, end: Date) => {
-    const now = end.getTime() + offset;
+    const now = end.getTime();
     const diff = new Date(now - s.getTime());
     setTime((prev) => ({
-      hours: formatNumber(diff.getHours()),
-      minutes: formatNumber(diff.getMinutes()),
-      seconds: formatNumber(diff.getSeconds()),
+      hours: formatNumber(diff.getUTCHours()),
+      minutes: formatNumber(diff.getUTCMinutes()),
+      seconds: formatNumber(diff.getUTCSeconds()),
       isOdd: !prev.isOdd,
     }));
   };
