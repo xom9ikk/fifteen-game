@@ -1,6 +1,7 @@
 {
   "name": "fifteen",
   "version": "0.1.0",
+  "description": "The Fifteen Game",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -14,7 +15,7 @@
   "keywords": [
     "fifteen",
     "game",
-    "fifteen-game",
+    "fifteen-game"
   ],
   "author": "Max Romanyuta <xom9ik.code@gmail.com>",
   "license": "MIT",
