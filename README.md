@@ -1,5 +1,5 @@
 <p align="center">
-  <a href='https://fifteen.xom9ik.com'>Colors - inspirational fifteen and gradients</a>
+  <a href='https://fifteen.xom9ik.com'>The Fifteen Game</a>
 </p>
 <p align="center"><img src='https://github.com/xom9ikk/fifteen-game/raw/master/screenshots/main.png' alt='Fifteen Screenshot' aria-label='fifteen.xom9ik.com' /></p>
 
