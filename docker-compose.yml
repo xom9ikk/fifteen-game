@@ -2,6 +2,7 @@ version: "3.5"
 services:
   fifteen-prod:
     image: fifteen-prod
+    restart: always
     container_name: fifteen-prod
     build:
       context: ./
